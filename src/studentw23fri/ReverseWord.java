@@ -14,7 +14,7 @@ public class ReverseWord {
         
         char[] myLetters = new char[word.length()];
         
-        for(int i = 0;, i < myLetters.length; i++) {
+        for(int i = 0; i < myLetters.length; i++) {
             myLetters[i] = word.charAt(i);
             System.out.print(myLetters[i]);
         }
