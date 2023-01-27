@@ -7,6 +7,7 @@ package studentw23fri;
 /**
  *
  * @author d3m0n
+ * Added comment for PULL command
  */
 public class StudentW23Fri {
     private String studentId;
