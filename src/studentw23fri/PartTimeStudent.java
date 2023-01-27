@@ -18,7 +18,7 @@ public class PartTimeStudent extends StudentW23Fri {
     }
 
     
-    public int getNumOfcourse {
+    public int getNumOfcourse() {
         return numOfcourse;    
     }
 
