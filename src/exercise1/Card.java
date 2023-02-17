@@ -12,35 +12,47 @@ package exercise1;
  */
 public class Card {
 
-   private String suit; //clubs, spades, diamonds, hearts
-   private int value;//1-13
+    public enum Suit {
+        HEARTS,CLUBS,SPADES,DIAMONDS
+    }
+    
+    public enum Value {
+        ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,
+        EIGHT,NINE,TEN,JACK,QUEEN,KING
+    }
+    
+    //public static final String[] SUITS=
+    //{"Hearts","Diamonds","Spades","Clubs"};
+    public Card(int value, String suit) {
+        this.value = value;
+        this.suit = suit;
+    }
+    
+    private int value;
+    private String suit;
 
-   public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
-    /**
-     * @return the suit
-     */
-    public String getSuit() {
-        return suit;
+    public int getValue() {
+        return this.value;
     }
 
     /**
-     * @param suit the suit to set
+     * 
+     * @param value
+     */
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getSuit() {
+        return this.suit;
+    }
+
+    /**
+     * 
+     * @param suit
      */
     public void setSuit(String suit) {
         this.suit = suit;
     }
 
-    /**
-     * @return the value
-     */
-    public int getValue() {
-        return value;
-    }
-
-    /**
-     * @param value the value to set
-     */
-    public void setValue(int value) {
-        this.value = value;
-    }  
 }

@@ -1,5 +1,7 @@
 package exercise1;
 
+import exercise1.Card.Suit;
+import exercise1.Card.Value;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,13 +19,13 @@ public class CardTrick {
         
         Card[] hand = new Card[7];
         Random random = new Random();
-        Scanner scan = new Scanner(System.in);
         
-        for (int i = 0; i < hand.length; i++) {
-            Card card = new Card();
-            card.setValue((int) ((Math.random() * (13 - 1)) + 1));
+        for(int i = 0;i<hand.length;i++){
+           Value value = Card.Value.values()[random.nextInt(3)];
+           String suit = Card.SUITS[random.nextInt(4)];
+           Card card = new Card(value,suit);
+           hand[i]=card;
             // 
-            card.setSuit(Card.SUITS[random.nextInt(4)]);
             // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
             //       Don't worry about duplicates at this point
         }
@@ -36,25 +38,29 @@ public class CardTrick {
         // Then loop through the cards in the array to see if there's a match.
         // If the guess is successful, invoke the printInfo() method below.
         
-        Card card2 = new Card();
-        while (true) {
-            System.out.println("Enter the card value: ");           
-            int value = scan.nextInt();
-            System.out.println("Enter the card suit: ");
-            String suit = scan.next();
-            if (value == card2.getValue() && suit.equals(card2.getSuit())) {
-                printInfo();
-                break;
-            } else if (value == card2.getValue() && suit.equals(card2.getSuit())) {
-                System.out.println("The value is correct, but the suit is incorrect.");
-            } else if (value != card2.getValue() && suit.equals(card2.getSuit())) {
-                System.out.println("The value is incorrect, but the suit is "
-                        + ""
-                        + "correct.");
-            } else {
-                System.out.println("Both the value and the suit are incorrect.");
-            }
+        Scanner input = new Scanner(System.in);
+        System.out.println("enter a suit for userguess: 0,1,2,3");
+        int suit = input.nextInt();
+        System.out.println("enter a value for userguess: 0 to 12");
+        int value = input.nextInt();
+        
+        Card userGuess= new Card(Card.Value.values()[valuePos],
+                          Card.Suit.values()[suitPos]);
+        //print hand
+        for (Card card:hand){
+            System.out.println(card.getValue()+ "   "+card.getSuit());
         }
+        //check the macth in below code
+        boolean match =false;
+        for(Card card:hand){
+            if(card.getValue()==userGuess.getValue()
+                && card.getSuit().equals(userGuess.getSuit())){
+                match=true;
+                break;
+            }//end of if
+        }//end of for 
+        String response = match ? "You guessed it right!": "Sorry no match...";
+        System.out.println(response);
     }
 
     /**
